@@ -1,0 +1,92 @@
+{% extends "admin_dashboard/layout.html" %}
+{% load static %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<main class="content px-3 py-2">
+    <div class="container-fluid">
+        <div class="mb-3">
+            <h4>Panel de administrador</h4>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 d-flex">
+                <div class="card flex-fill border-0 illustration">
+                    <div class="card-body p-0 d-flex flex-fill">
+                        <div class="row g-0 w-100">
+                            <div class="col-6">
+                                <div class="p-3 m-1">
+                                    <h4>Bienvenido señor@, administrador</h4>
+                                    {% if user.is_authenticated %}
+                                        <p class="mb-0">{{ user.nombres }} {{ user.apellidos }}</p>
+                                    {% else %}
+                                        <p class="mb-0">Administrador@</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-6 align-self-end text-end">
+                                <img src="{% static "img/customer-support.png" %}" class="img-fluid illustration-img"
+                                    alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 d-flex">
+                <div class="card flex-fill border-0">
+                    <div class="card-body py-4">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-grow-1">
+                                <h4 class="mb-2">
+                                    {{ total_usuarios }}
+                                </h4>
+                                <p class="mb-2">
+                                    usuarios registrados
+                                </p>
+                                <div class="mb-0">
+                                    <span class="text-muted">
+                                        {{ fecha_actual }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Table Element -->
+        <div class="card border-0">
+            <div class="card-header">
+                <h5 class="card-title">
+                    Tabla de usuarios
+                </h5>
+                <h6 class="card-subtitle text-muted">
+                    Podras visualizar los usuarios registrados hasta la fecha actual <strong>{{ fecha_actual }}</strong>
+                </h6>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Número de documento</th>
+                            <th scope="col">Correo electronico</th>
+                            <th scope="col">Puntos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for usuarios in usuario %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ usuarios.nombres }} {{ usuarios.apellidos }}</td>
+                                <td>{{ usuarios.numero_documento }}</td>
+                                <td>{{ usuarios.correo }}</td>
+                                <td>{{ usuarios.puntos_totales }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

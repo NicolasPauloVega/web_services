@@ -1,0 +1,65 @@
+{% extends "admin_dashboard/layout.html" %}
+{% load static %}
+{% block title %}Estadisticas{% endblock %}
+{% block content %}
+<main class="content px-3 py-2">
+    <div class="card border-0">
+        <div class="card-header">
+            <h2 class="card-title">Estadistica</h2>
+            <h6 class="card-subtitle text-muted">
+                Visualiza y administra quienes tienen mejor puntuacion y quienes tienen menor para determinar quien cumple y quien no.
+            </h6>
+        </div>
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="text-start">
+                    <h5 class="text-success fw-bold">🏆 Mejor Usuario</h5>
+                    <p id="mejor" class="fs-5"></p>
+                </div>
+                <div class="text-end">
+                    <h5 class="text-danger fw-bold">💀 Peor Usuario</h5>
+                    <p id="peor" class="fs-5"></p>
+                </div>
+            </div>
+            <canvas id="graficoPuntos"></canvas>
+        </div>
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    fetch("{% url 'datos_graficos' %}")
+    .then(response => response.json())
+    .then(data => {
+        // Verificar si hay un error en la respuesta
+        if (data.error) {
+            console.error(data.error);
+            return;
+        }
+
+        // Configurar Chart.js
+        const ctx = document.getElementById('graficoPuntos').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.todos.map(user => `${user.nombre} ${user.apellidos}`),  // Corregido
+                datasets: [{
+                    label: 'Puntos Totales',
+                    data: data.todos.map(user => user.puntos),  // Corregido
+                    backgroundColor: 'rgba(0, 200, 100, 0.7)'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Mostrar el mejor y peor usuario
+        document.getElementById("mejor").innerHTML = `<strong>${data.mejor.nombre} ${data.mejor.apellidos}</strong> (${data.mejor.puntos})`;
+        document.getElementById("peor").innerHTML = `<strong>${data.peor.nombre} ${data.peor.apellidos}</strong> (${data.peor.puntos})`;
+    })
+    .catch(error => console.error('Error al obtener los datos:', error));
+</script>
+{% endblock %}

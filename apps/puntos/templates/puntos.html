@@ -1,0 +1,113 @@
+{% extends "admin_dashboard/layout.html" %}
+{% load static %}
+{% block title %}Puntos{% endblock %}
+{% block content %}
+<main class="content px-3 py-2">
+    <div class="card border-0">
+        <div class="card-header">
+            <h2 class="card-title">Asignar Puntos</h2>
+            <h6 class="card-subtitle text-muted">
+                Asigna los puntos para <strong>{{ usuario.nombres|upper }} {{ usuario.apellidos|upper }}</strong>
+            </h6>
+        </div>
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data" class="p-4 shadow-lg rounded">
+                {% csrf_token %}
+
+                {% if messages %}
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            {% for message in messages %}
+                                Swal.fire({
+                                    title: "{% if 'success' in message.tags %}¡Éxito!{% else %}¡Error!{% endif %}",
+                                    text: "{{ message }}",
+                                    icon: "{% if 'success' in message.tags %}success{% else %}error{% endif %}",
+                                    confirmButtonColor: "#3085d6",
+                                    confirmButtonText: "Aceptar"
+                                });
+                            {% endfor %}
+                        });
+                    </script>
+                {% endif %}
+
+                <input type="hidden" name="usuario" value="{{ usuario.numero_documento }}">
+
+                <!-- Selección de Programa -->
+                <div class="mb-3">
+                    <label for="id_programa" class="form-label">Programa</label>
+                    <select class="form-select" id="id_programa" name="programa">
+                        <option value="">Selecciona un programa</option>
+                        {% for programa in programas %}
+                            <option value="{{ programa.id }}">{{ programa.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Selección de Actividad -->
+                <div class="mb-3">
+                    <label for="id_actividad" class="form-label">Actividad</label>
+                    <select name="actividad" id="id_actividad" class="form-select">
+                        <option value="">Selecciona una actividad</option>
+                    </select>
+                </div>
+
+                <!-- Campo de Puntos (Se llena automáticamente) -->
+                <div class="mb-3">
+                    <label for="puntos" class="form-label">Puntos</label>
+                    <input type="number" name="puntos" id="puntos" class="form-control" readonly>
+                </div>
+
+                <!-- Evidencia (Archivo) -->
+                <div class="mb-3">
+                    <label for="id_evidencia" class="form-label">Subir Evidencia</label>
+                    <input type="file" name="evidencia" id="id_evidencia" class="form-control">
+                </div>
+
+                <button type="submit" class="btn btn-warning w-100">Asignar Puntos</button>
+
+                <br><br>
+
+                <div class="text-center">
+                    <a href="{% url 'list_usuarios' %}" class="text-warning">Volver</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var selectPrograma = document.getElementById("id_programa");
+        var selectActividad = document.getElementById("id_actividad");
+        var inputPuntos = document.getElementById("puntos");
+
+        selectPrograma.addEventListener("change", function () {
+            var programaId = this.value;
+            selectActividad.innerHTML = '<option value="">Selecciona una actividad</option>';
+
+            if (programaId) {
+                var url = "{% url 'obtener_actividades' 123 %}".replace("123", programaId);
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(actividad => {
+                            let option = document.createElement("option");
+                            option.value = actividad.id;
+                            option.textContent = actividad.nombre;
+                            option.setAttribute("data-puntos", actividad.puntos);
+                            selectActividad.appendChild(option);
+                        });
+                    })
+                    .catch(error => console.error("Error:", error));
+            }
+        });
+
+        selectActividad.addEventListener("change", function () {
+            var selectedOption = selectActividad.options[selectActividad.selectedIndex];
+            var puntos = selectedOption.getAttribute("data-puntos") || "";
+            inputPuntos.value = puntos;
+        });
+    });
+</script>
+{% endblock %}

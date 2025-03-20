@@ -1,0 +1,46 @@
+{% extends "admin_dashboard/layout.html" %}
+{% load static %}
+{% block title %}Actualiza usuario{% endblock %}
+{% block content %}
+<!-- Main Content -->
+<main class="content px-3 py-2">
+    <div class="card border-0">
+        <div class="card-header">
+            <h2 class="card-title">
+                Crear usuario
+            </h2>
+
+            <h6 class="card-subtitle text-muted">
+                Podras crear un usuario con su propio avatar y asignandole el rol de administrador o staff
+            </h6>
+        </div>
+        <div class="card-body">
+            {% if field.errors %}
+                <div class="alert alert-danger mt-1">
+                    {{ field.errors|striptags }}
+                </div>
+            {% endif %}
+            <form method="POST" enctype="multipart/form-data" class="p-4 shadow-lg rounded">
+                {% csrf_token %}
+            
+                {% for field in form %}
+                    <div class="mb-3">
+                        <label class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="alert alert-danger mt-1">
+                                {{ field.errors|striptags }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-warning w-100">Guardar cambios</button>
+                <br><br>
+                <a href="{% url 'list_usuarios' %}" class="btn btn-danger w-100">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</main>
+<script src="{% static 'js/toggle_password.js' %}"></script>
+{% endblock %}

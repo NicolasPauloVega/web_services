@@ -1,0 +1,98 @@
+{% extends "admin_dashboard/layout.html" %}
+{% load static %}
+{% block title %}Usuarios{% endblock %}
+{% block content %}
+<!-- Users data -->
+<main class="content px-3 py-2">
+    <div class="card border-0">
+        <div class="card-header">
+            {% if messages %}
+                <script>
+                    {% for message in messages %}
+                        alert("{{ message }}");
+                    {% endfor %}
+                </script>
+            {% endif %}
+            <h5 class="card-title">
+                Tabla de usuarios
+            </h5>
+            <h6 class="card-subtitle text-muted">
+                Administra los usuarios actualizando los datos, desactivandolo o creando un nuevo usuario.
+            </h6><br>
+
+            <div class="d-flex justify-content-between w-100">
+                <a href="{% url "crear_usuario" %}" class="btn btn-warning">Crear un nuevo usuario</a>
+                <a href="{% url "reiniciar_puntos" %}" class="btn btn-danger">Reiniciar Puntos</a>
+            </div>
+
+            <form method="get" class="mt-3">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Buscar usuario..." value="{{ request.GET.q }}">
+                    <button type="submit" class="btn btn-warning text-white"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Avatar</th>
+                        <th scope="col">Nombres</th>
+                        <th scope="col">Número de documento</th>
+                        <th scope="col">Correo electronico</th>
+                        <th scope="col">Puntos</th>
+                        <th scope="col" colspan="3">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuarios in usuario %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>
+                                {% if usuarios.avatar %}
+                                    <img src="{{ usuarios.avatar.url }}" alt="Image" class="img-fluid rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+                                {% else %}
+                                    <span class="text-muted"><strong>Sin avatar</strong></span>
+                                {% endif %}
+                            </td>
+                            <td>{{ usuarios.nombres }} {{ usuarios.apellidos }}</td>
+                            <td>{{ usuarios.numero_documento }}</td>
+                            <td>{{ usuarios.correo }}</td>
+                            <td>{{ usuarios.puntos_totales }}</td>
+                            <td><a href="{% url "act_usuario" usuarios.numero_documento %}" class="text-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                            <td class="text-center"><a href="{% url "puntos_evidencia" usuarios.numero_documento %}" class="text-prymary"><i class="fa-solid fa-eye"></i></a></td>
+                            <td class="text-center"><a href="{% url "puntos" usuarios.numero_documento %}" class="text-success"><i class="fa-solid fa-heart-pulse"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <nav>
+        <ul class="pagination justify-content-center">
+            {% if usuarios.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?q={{ query }}&page=1">Primero</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?q={{ query }}&page={{ usuarios.previous_page_number }}">Anterior</a>
+                </li>   
+            {% endif %}
+    
+            <li class="page-item disabled">
+                <span class="page-link">Página {{ usuarios.number }} de {{ usuarios.paginator.num_pages }}</span>
+            </li>
+    
+            {% if usuarios.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?q={{ query }}&page={{ usuarios.next_page_number }}">Siguiente</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?q={{ query }}&page={{ usuarios.paginator.num_pages }}">Último</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</main>
+{% endblock %}

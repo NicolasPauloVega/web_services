@@ -1,0 +1,87 @@
+{% extends "admin_dashboard/layout.html" %}
+{% load static %}
+{% block title %}Crear usuario{% endblock %}
+{% block content %}
+<!-- Main Content -->
+<main class="content px-3 py-2">
+    <div class="card border-0">
+        <div class="card-header">
+            <h2 class="card-title">
+                Crear usuario
+            </h2>
+
+            <h6 class="card-subtitle text-muted">
+                Podras crear un usuario con su propio avatar y asignandole el rol de administrador o staff
+            </h6>
+        </div>
+        <div class="card-body">
+            {% if field.errors %}
+                <div class="alert alert-danger mt-1">
+                    {{ field.errors|striptags }}
+                </div>
+            {% endif %}
+            <form method="POST" enctype="multipart/form-data" class="p-4 shadow-lg rounded">
+                {% csrf_token %}
+            
+                <div class="mb-3">
+                    <label class="form-label">Número de Documento</label>
+                    {{ form.numero_documento }}
+                </div>
+            
+                <div class="mb-3">
+                    <label class="form-label">Nombres</label>
+                    {{ form.nombres }}
+                </div>
+            
+                <div class="mb-3">
+                    <label class="form-label">Apellidos</label>
+                    {{ form.apellidos }}
+                </div>
+            
+                <div class="mb-3">
+                    <label class="form-label">Correo Electrónico</label>
+                    {{ form.correo }}
+                </div>
+            
+                <div class="mb-3">
+                    <label class="form-label">Avatar</label>
+                    {{ form.avatar }}
+                </div>
+            
+                <div class="mb-3 position-relative">
+                    <label class="form-label">Contraseña</label>
+                    <div class="input-group">
+                        {{ form.password1 }}
+                        <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password1">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            
+                <div class="mb-3 position-relative">
+                    <label class="form-label">Confirmar Contraseña</label>
+                    <div class="input-group">
+                        {{ form.password2 }}
+                        <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password2">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+            
+                <div class="form-check mb-3">
+                    {{ form.is_staff }}
+                    <label class="form-check-label">Es Staff</label>
+                </div>
+            
+                <div class="form-check mb-3">
+                    {{ form.is_active }}
+                    <label class="form-check-label">Está Activo</label>
+                </div>
+            
+                <button type="submit" class="btn btn-warning w-100">Registrarse</button>
+            </form>
+        </div>
+    </div>
+</main>
+<script src="{% static 'js/toggle_password.js' %}"></script>
+{% endblock %}

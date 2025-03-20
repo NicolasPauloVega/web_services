@@ -1,0 +1,68 @@
+{% extends "admin_dashboard/layout.html" %}
+{% load static %}
+{% block title %}Crear Actividad{% endblock %}
+{% block content %}
+<!-- Main Content -->
+<main class="content px-3 py-2">
+    <div class="card border-0">
+        <div class="card-header">
+            <h2 class="card-title">
+                Crear actividad
+            </h2>
+
+            <h6 class="card-subtitle text-muted">
+                Podras crear una nueva actividad la cual administre puntuaciones negativas o positivas.
+            </h6>
+        </div>
+        <div class="card-body">
+            <form method="POST" class="p-4 shadow-lg rounded">
+                {% csrf_token %}
+
+                {% if messages %}
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            {% for message in messages %}
+                                Swal.fire({
+                                    title: "{% if 'success' in message.tags %}¡Éxito!{% else %}¡Error!{% endif %}",
+                                    text: "{{ message }}",
+                                    icon: "{% if 'success' in message.tags %}success{% else %}error{% endif %}",
+                                    confirmButtonColor: "#3085d6",
+                                    confirmButtonText: "Aceptar"
+                                });
+                            {% endfor %}
+                        });
+                    </script>
+                {% endif %}
+
+                <div class="mb-3">
+                    <label for="select_program" class="label-control">Programa</label>
+                    <select name="programa" id="programa" class="form-select">
+                        {% for programa in programas %}
+                            <option value="{{ programa.id }}" class="text-warning">{{ programa.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            
+                <div class="mb-3">
+                    <label for="actividad" class="label-control">Actividad</label>
+                    <br>
+                    <br>
+                    {{ form.nombre }}
+                </div>
+                <div class="mb-3">
+                    <label for="programa" class="label-control">Puntos</label>
+                    <br><br>
+                    {{ form.puntos }}
+                </div>
+            
+                <button type="submit" class="btn btn-warning w-100">Crear Programa</button>
+                <br>
+                <br>
+                <div class="text-center">
+                    <a href="{% url "actividades" %}" class="text-warning">volver</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

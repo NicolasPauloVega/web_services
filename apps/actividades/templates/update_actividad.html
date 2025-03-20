@@ -1,0 +1,60 @@
+{% extends "admin_dashboard/layout.html" %}
+{% load static %}
+{% block title %}Actualiza usuario{% endblock %}
+{% block content %}
+<!-- Main Content -->
+<main class="content px-3 py-2">
+    <div class="card border-0">
+        <div class="card-header">
+            <h2 class="card-title">
+                Crear usuario
+            </h2>
+
+            <h6 class="card-subtitle text-muted">
+                Podras crear un usuario con su propio avatar y asignandole el rol de administrador o staff
+            </h6>
+        </div>
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data" class="p-4 shadow-lg rounded">
+                {% csrf_token %}
+                
+                {% if messages %}
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            {% for message in messages %}
+                                Swal.fire({
+                                    title: "{% if 'success' in message.tags %}¡Éxito!{% else %}¡Error!{% endif %}",
+                                    text: "{{ message }}",
+                                    icon: "{% if 'success' in message.tags %}success{% else %}error{% endif %}",
+                                    confirmButtonColor: "#3085d6",
+                                    confirmButtonText: "Aceptar"
+                                });
+                            {% endfor %}
+                        });
+                    </script>
+                {% endif %}
+
+                <input type="hidden" value="{{ actividad.id }}">
+
+                <div style="display: none;">
+                    {{ form.programa }}
+                </div>
+            
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    {{ form.nombre }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="puntos" class="form-label">Puntos</label>
+                    {{ form.puntos }}
+                </div>
+
+                <button type="submit" class="btn btn-warning w-100">Guardar cambios</button>
+                <br><br>
+                <a href="{% url 'list_usuarios' %}" class="btn btn-danger w-100">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

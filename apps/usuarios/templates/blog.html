@@ -1,0 +1,218 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+
+<hr style="color:  #fd7e14 !important;">
+
+<!-- Programs Section-->
+<section class="page-section programas" id="programas">
+    <div class="container">
+        <!-- Programs Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Programas</h2>
+        <!-- Icon -->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Program activity-->
+        <div class="row justify-content-center">
+            <!-- Program activity 1-->
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="{% static "img/usuario/habitos_saludables.png" %}" alt="..." />
+                </div>
+            </div>
+            <!-- Program activity 2 -->
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="{% static "img/usuario/medio_ambiente.png" %}" alt="..." />
+                </div>
+            </div>
+            <!-- Program activity 3 -->
+            <div class="col-md-6 col-lg-4 mb-5">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="{% static "img/usuario/reciclaje.png" %}" alt="..." />
+                </div>
+            </div>
+            <!-- Program activity 4 -->
+            <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="{% static "img/usuario/botella.png" %}" alt="..." />
+                </div>
+            </div>
+            <!-- Program activity 5 -->
+            <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="{% static "img/usuario/coala.png" %}" alt="..." />
+                </div>
+            </div>
+            <!-- Program activity 6 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="{% static "img/usuario/tapitas.png" %}" alt="..." />
+                </div>
+            </div>
+            <!-- Program activity 7 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal7">
+                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                    </div>
+                    <img class="img-fluid" src="{% static "img/usuario/seguridad.png" %}" alt="..." />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr style="color: #fd7e14 !important;">
+
+<!-- Application section -->
+<section class="page-section text-white mb-0" id="objetivo">
+    <div class="container">
+        <!-- Application section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-white">OBJETIVO DEL APLICATIVO</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Application section Content-->
+        <div class="row">
+            <div class="col-lg-4 ms-auto">
+                <p class="lead">
+                    El Aplicativo Bienestar y Felicidad tiene como objetivo sensibilizar de manera dinámica y divertida a todos los trabajadores de Positiva Compañía de Seguros - Sucursal Tolima sobre la importancia del bienestar integral.
+                </p>
+                <br>
+                <p class="lead">
+                    A través de siete programas, promovemos hábitos que garantizan el bienestar físico, mental y emocional, tanto propio como del entorno en el que convivimos diariamente:
+                </p>
+            </div>
+            <div class="col-lg-4 me-auto">
+                <p class="lead">
+                    🌱 Hábitos Saludables
+                    <br>
+                    🌍 Medio Ambiente
+                    <br>
+                    ♻️ Reciclaje
+                    <br>
+                    💙 Botellitas de Amor
+                    <br>
+                    🐨 Coala
+                    <br>
+                    🔵 Tapitas Positivas
+                    <br>
+                    🔒 Seguridad de la Información
+                    <br>
+                    📢 ¡Únete a esta iniciativa y contribuyamos juntos a un ambiente más saludable y positivo para todos! 💪✨
+                </p>
+            </div>
+        </div>
+        <!-- Application section Button-->
+        <div class="text-center mt-4">
+            <button class="btn btn-xl btn-outline-light" data-bs-toggle="modal" data-bs-target="#reglamentoModal">
+                <i class="fa-solid fa-book"></i>
+                REGLAMENTO
+            </button>
+        </div>
+    </div>
+</section>
+
+<hr style="color: #fd7e14 !important;">
+
+<!-- users Section-->
+<section class="page-section" id="usuarios">
+    <div class="container">
+        <!-- users Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">USUARIOS</h2>
+        <!-- Icon -->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Contact Section Form-->
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered align-middle">
+                        <thead style="background-color: orange; color: white;">
+                            <tr>
+                                <th>AVATAR</th>
+                                <th>NOMBRE COMPLETO</th>
+                                <th>DOCUMENTO</th>
+                                <th>CORREO</th>
+                                <th>PUNTOS</th>
+                                <th>Evidencias</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for usuario in usuario %}
+                            <tr>
+                                <td>
+                                    {% if usuario.avatar %}
+                                        <img src="{{ usuario.avatar.url }}"  class="img-thumbnail rounded-circle" style="width: 80px; height: 80px;">
+                                    {% else %}
+                                        <img src="{% static 'img/avataaars.svg' %}"  class="img-thumbnail rounded-circle" style="width: 80px; height: 80px;">
+                                    {% endif %}
+                                </td>
+                                <td>{{ usuario.nombres }} {{ usuario.apellidos }}</td>
+                                <td>{{ usuario.numero_documento }}</td>
+                                <td>{{ usuario.correo }}</td>
+                                <td>{{ usuario.puntos_totales }}</td>
+                                <td class="text-center"><a href="#"><i class="fa-solid fa-eye" style="color: #000000;"></i></a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            {% if usuarios.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?q={{ query }}&page=1">Primero</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?q={{ query }}&page={{ usuarios.previous_page_number }}">Anterior</a>
+                                </li>   
+                            {% endif %}
+                    
+                            <li class="page-item disabled">
+                                <span class="page-link">Página {{ usuarios.number }} de {{ usuarios.paginator.num_pages }}</span>
+                            </li>
+                    
+                            {% if usuarios.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?q={{ query }}&page={{ usuarios.next_page_number }}">Siguiente</a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?q={{ query }}&page={{ usuarios.paginator.num_pages }}">Último</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
