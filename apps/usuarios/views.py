@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from .forms import FormularioLogin, UsuarioRegisterForm, UsuarioUpdateForm
 from .models import Usuarios
+from apps.puntos.models import Puntos
 from django.utils import timezone
 from django.db.models import Q
 from django.core.paginator import Paginator
@@ -160,3 +161,62 @@ def reiniciar_puntos(request):
     
     messages.success(request, "¡Puntos reiniciados con éxito!")
     return redirect('list_usuarios')
+
+@login_required(login_url='/accounts/login')
+@user_passes_test(is_staff, login_url=('/'))
+def profile(request, id_usuario):
+    usuario = Usuarios.objects.filter(numero_documento = id_usuario)
+    query = request.GET.get('q', '')
+    
+    if query:
+        # Buscar al usuario en la bd
+        usuario = usuarios.filter(
+            Q(numero_documento__icontains = query) |
+            Q(nombres__icontains = query) |
+            Q(apellidos__icontains = query)
+        )
+        
+    paginator = Paginator(usuario,10)
+    page_number = request.GET.get('page')
+    usuarios_paginados = paginator.get_page(page_number)
+    return render(request, 'registration/profile.html', {'usuario': usuarios_paginados, 'query': query})
+
+@login_required(login_url='/accounts/login')
+@user_passes_test(is_staff, login_url=('/'))
+def profile(request, id_usuario):
+    usuario = Usuarios.objects.filter(numero_documento = id_usuario)
+    query = request.GET.get('q', '')
+    
+    if query:
+        # Buscar al usuario en la bd
+        usuario = usuarios.filter(
+            Q(numero_documento__icontains = query) |
+            Q(nombres__icontains = query) |
+            Q(apellidos__icontains = query)
+        )
+        
+    paginator = Paginator(usuario,10)
+    page_number = request.GET.get('page')
+    usuarios_paginados = paginator.get_page(page_number)
+    return render(request, 'registration/profile.html', {'usuario': usuarios_paginados, 'query': query})
+
+@login_required(login_url='/accounts/login/')
+def evidencias_points(request, id_usuario):
+    puntos = Puntos.objects.filter(usuario=id_usuario)
+    query = request.GET.get('q', '')
+
+    if query:
+        puntos = puntos.filter(
+            Q(programa__nombre__icontains=query) |
+            Q(actividad__nombre__icontains=query)
+        )
+
+    # Paginación
+    paginator = Paginator(puntos, 10)
+    page_number = request.GET.get('page')
+    puntos_paginados = paginator.get_page(page_number)
+
+    return render(request, 'registration/evidence.html', {
+        'puntos': puntos_paginados, 
+        'query': query,
+    })

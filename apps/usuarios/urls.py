@@ -10,6 +10,10 @@ urlpatterns = [
     path('accounts/login/', ingresar, name="ingresar"),
     path('accounts/logout/', login_required(salir), name="salir"),
     path('accounts/register/', login_required(registro), name="registrar"),
+    # Perfil de usuario
+    path('perfil_usuario/<int:id_usuario>', login_required(profile), name="perfil"),
+    # Evidencias de usuario
+    path('evidencias/<int:id_usuario>', login_required(evidencias_points), name="puntos"),
     # Administración
     path('admin_panel/', login_required(admin_dashboard), name="admin_panel"),
     # Administración usuarios
