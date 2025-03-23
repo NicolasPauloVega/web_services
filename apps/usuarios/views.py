@@ -220,3 +220,8 @@ def evidencias_points(request, id_usuario):
         'puntos': puntos_paginados, 
         'query': query,
     })
+    
+@login_required(login_url='/accounts/login/')
+@user_passes_test(is_staff, login_url=('/'))
+def profile_superuser(request):
+    return render(request, 'admin_dashboard/profile.html')

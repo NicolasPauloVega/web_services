@@ -18,6 +18,7 @@ urlpatterns = [
     path('admin_panel/', login_required(admin_dashboard), name="admin_panel"),
     # Administración usuarios
     path('admin_panel/usuarios', login_required(usuarios), name="list_usuarios"),
+    path('admin_panel/usuarios/perfil', login_required(profile_superuser), name="profile_superuser"),
     path('admin_panel/crear_usuario', login_required(crear_usuario), name="crear_usuario"),
     path('admin_panel/usuarios/actualizar/<int:id_usuario>', login_required(actualizar_usuarios), name="act_usuario"),
     # Administracion puntos

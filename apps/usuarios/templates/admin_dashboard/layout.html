@@ -92,12 +92,12 @@
                                     {% if user.avatar %}
                                         <img class="avatar img-fluid rounded" src="{{ user.avatar.url }}" alt="Avatar de {{ user.nombres }}">
                                     {% else %}
-                                        <i class="avatar img-fluid rounded fa-solid fa-user-tie"></i>
+                                        <img src="{% static "img/usuario/usuario.png" %}" alt="usuario" class="avatar img-fluid">
                                     {% endif %}
                                 {% endif %}
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="#" class="dropdown-item">Perfil</a>
+                                <a href="{% url "profile_superuser" %}" class="dropdown-item">Perfil</a>
                                 <a href="{% url "salir" %}" class="dropdown-item">Salir</a>
                             </div>
                         </li>
