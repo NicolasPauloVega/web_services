@@ -15,6 +15,8 @@ from django.core.mail import send_mail
 from django.utils.crypto import get_random_string
 from .forms import PasswordResetRequestForm
 from django.contrib.auth.hashers import make_password
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 def is_staff(user):
     return user.is_active and user.is_staff # Validar si es administrador y esta activo
@@ -65,6 +67,7 @@ def ingresar(request):
             
             if user is not None:
                 login(request, user)
+                messages.success(request, "Inicio de sesión exitoso")
                 return redirect('inicio')
             else:
                 form.add_error(None, "Número de documento o contraseña incorrectos")
@@ -243,14 +246,24 @@ def solicitar_restauracion(request):
             usuario.password = token  # Temporalmente almacena el token como clave
             usuario.save()
 
-            # Enviar correo con el enlace para restablecer contraseña
+            # Crear enlace de restablecimiento
             reset_link = f"http://127.0.0.1:8000/cambiar_contraseña_confirmar/{token}/"
+
+            # Renderizar la plantilla personalizada con los datos
+            mensaje_html = render_to_string("emails/restablecer_contraseña.html", {
+                "usuario": usuario,
+                "reset_link": reset_link
+            })
+            mensaje_texto = strip_tags(mensaje_html)  # Versión en texto plano
+
+            # Enviar correo
             send_mail(
                 'Restablecer tu contraseña',
-                f'Hola {usuario.nombres}, usa este enlace para restablecer tu contraseña: {reset_link}',
+                mensaje_texto,
                 'noreply@tuapp.com',
                 [correo],
                 fail_silently=False,
+                html_message=mensaje_html  # Mensaje en HTML
             )
 
             messages.success(request, "Se ha enviado un correo con las instrucciones para restablecer tu contraseña.")

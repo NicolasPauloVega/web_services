@@ -31,7 +31,7 @@
                     <h3 class="text-center fw-bold" style="color: #FF6600;">Recuperar Acceso</h3>
                     <p class="text-center text-muted">Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.</p>
 
-                    <form method="POST">
+                    <form method="POST" id="resetPasswordForm">
                         {% csrf_token %}
                         
                         <!-- Campo de Correo Electrónico -->
@@ -46,5 +46,36 @@
                 </div>
             </div>
         </div>
+
+        <!-- SweetAlert CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <script>
+            document.getElementById("resetPasswordForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // Evitar el envío automático del formulario
+
+                let correo = document.getElementById("correo").value;
+
+                if (correo.trim() === "") {
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Campo vacío",
+                        text: "Por favor, ingresa tu correo electrónico.",
+                        confirmButtonColor: "#FF6600"
+                    });
+                    return;
+                }
+
+                // Simular el envío del formulario (aquí puedes hacer un fetch AJAX si lo deseas)
+                Swal.fire({
+                    icon: "success",
+                    title: "¡Correo enviado!",
+                    text: "Si el correo ingresado es válido, recibirás un enlace para restablecer tu contraseña.",
+                    confirmButtonColor: "#FF6600"
+                }).then(() => {
+                    document.getElementById("resetPasswordForm").submit();
+                });
+            });
+        </script>
     </body>
 </html>

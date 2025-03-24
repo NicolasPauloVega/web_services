@@ -1,85 +1,136 @@
 {% load static %}
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-            <title>Cambiar contraseña - Bienestar y Felicidad </title>
-            <!-- Favicon-->
-            <link rel="icon" type="image/x-icon" href="{% static "img/logo.png" %}" />
-            <!-- Font Awesome icons (free version)-->
-            <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-            <!-- Google fonts-->
-            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" type="text/css" />
-            <!-- Core theme CSS (includes Bootstrap)-->
-            <link href="{% static "css/usuario.styles.css" %}" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Main Content -->
-        <div class="container d-flex justify-content-center align-items-center min-vh-100">
-            <div class="row border rounded-5 shadow-lg bg-white box-area">
-                <!-- Left Box (Imagen e Información) -->
-                <div class="col-md-6 d-flex flex-column align-items-center justify-content-center text-white p-5 rounded-4" style="background-color: #FF6600;">
-                    <img src="{% static 'img/usuario/coala.png' %}" class="img-fluid mb-3" style="width: 250px;">
-                    <h2 class="fw-bold">Cambiar Contraseña</h2>
-                    <p class="text-center">Ingresa una nueva contraseña para tu cuenta.</p>
-                </div>
-        
-                <!-- Right Box (Formulario) -->
-                <div class="col-md-6 right-box p-5">
-                    <h3 class="text-center fw-bold" style="color: #FF6600;">Nueva Contraseña</h3>
-                    <p class="text-center text-muted">Asegúrate de que sea segura y fácil de recordar.</p>
-        
-                    <form method="POST">
-                        {% csrf_token %}
-                        
-                        <!-- Nueva Contraseña -->
-                        <div class="mb-3">
-                            <label for="nueva_password" class="form-label fw-bold">Nueva contraseña</label>
-                            <div class="input-group">
-                                <input type="password" id="nueva_password" name="nueva_password" class="form-control" required>
-                                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('nueva_password', 'icono1')">
-                                    <i class="bi bi-eye" id="icono1"></i>
-                                </button>
-                            </div>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cambiar contraseña - Bienestar y Felicidad</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}">
+    <!-- Font Awesome & Bootstrap Icons -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/usuario.styles.css' %}" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Content -->
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="row border rounded-5 shadow-lg bg-white box-area">
+            <!-- Left Box (Imagen e Información) -->
+            <div class="col-md-6 d-flex flex-column align-items-center justify-content-center text-white p-5 rounded-4" style="background-color: #FF6600;">
+                <img src="{% static 'img/usuario/coala.png' %}" class="img-fluid mb-3" style="width: 250px;">
+                <h2 class="fw-bold">Cambiar Contraseña</h2>
+                <p class="text-center">Ingresa una nueva contraseña para tu cuenta.</p>
+            </div>
+
+            <!-- Right Box (Formulario) -->
+            <div class="col-md-6 right-box p-5">
+                <h3 class="text-center fw-bold" style="color: #FF6600;">Nueva Contraseña</h3>
+                <p class="text-center text-muted">Asegúrate de que sea segura y fácil de recordar.</p>
+
+                <form method="POST" id="resetPasswordForm">
+                    {% csrf_token %}
+
+                    <!-- Nueva Contraseña -->
+                    <div class="mb-3">
+                        <label for="nueva_password" class="form-label fw-bold">Nueva contraseña</label>
+                        <div class="input-group">
+                            <input type="password" id="nueva_password" name="nueva_password" class="form-control" required>
+                            <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('nueva_password', 'icono1')">
+                                <i class="bi bi-eye" id="icono1"></i>
+                            </button>
                         </div>
-        
-                        <!-- Confirmar Contraseña -->
-                        <div class="mb-3">
-                            <label for="confirmar_password" class="form-label fw-bold">Confirmar contraseña</label>
-                            <div class="input-group">
-                                <input type="password" id="confirmar_password" name="confirmar_password" class="form-control" required>
-                                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('confirmar_password', 'icono2')">
-                                    <i class="bi bi-eye" id="icono2"></i>
-                                </button>
-                            </div>
+                    </div>
+
+                    <!-- Confirmar Contraseña -->
+                    <div class="mb-3">
+                        <label for="confirmar_password" class="form-label fw-bold">Confirmar contraseña</label>
+                        <div class="input-group">
+                            <input type="password" id="confirmar_password" name="confirmar_password" class="form-control" required>
+                            <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('confirmar_password', 'icono2')">
+                                <i class="bi bi-eye" id="icono2"></i>
+                            </button>
                         </div>
-        
-                        <!-- Botón de Restablecimiento -->
-                        <button type="submit" class="btn btn-lg w-100 text-white" style="background-color: #FF6600;">Restablecer Contraseña</button>
-                    </form>
-                </div>
+                    </div>
+
+                    <!-- Botón de Restablecimiento -->
+                    <button type="submit" class="btn btn-lg w-100 text-white" style="background-color: #FF6600;">Restablecer Contraseña</button>
+                </form>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Script para Mostrar/Ocultar Contraseñas -->
-        <script>
-            function togglePassword(inputId, iconId) {
-                let input = document.getElementById(inputId);
-                let icon = document.getElementById(iconId);
-                
-                if (input.type === "password") {
-                    input.type = "text";
-                    icon.classList.remove("bi-eye");
-                    icon.classList.add("bi-eye-slash");
-                } else {
-                    input.type = "password";
-                    icon.classList.remove("bi-eye-slash");
-                    icon.classList.add("bi-eye");
-                }
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Script para Validación y SweetAlert -->
+    <script>
+        document.getElementById("resetPasswordForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evitar el envío automático del formulario
+
+            let nuevaPassword = document.getElementById("nueva_password").value;
+            let confirmarPassword = document.getElementById("confirmar_password").value;
+
+            if (nuevaPassword.trim() === "" || confirmarPassword.trim() === "") {
+                Swal.fire({
+                    icon: "warning",
+                    title: "Campos vacíos",
+                    text: "Por favor, llena ambos campos.",
+                    confirmButtonColor: "#FF6600"
+                });
+                return;
             }
-        </script>
-    </body>
+
+            if (nuevaPassword.length < 8) {
+                Swal.fire({
+                    icon: "warning",
+                    title: "Contraseña demasiado corta",
+                    text: "La contraseña debe tener al menos 8 caracteres.",
+                    confirmButtonColor: "#FF6600"
+                });
+                return;
+            }
+
+            if (nuevaPassword !== confirmarPassword) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Las contraseñas no coinciden",
+                    text: "Por favor, asegúrate de que ambas contraseñas sean iguales.",
+                    confirmButtonColor: "#FF6600"
+                });
+                return;
+            }
+
+            // Si todo está bien, se muestra el mensaje de éxito y se envía el formulario
+            Swal.fire({
+                icon: "success",
+                title: "¡Contraseña restablecida!",
+                text: "Tu contraseña ha sido cambiada con éxito.",
+                confirmButtonColor: "#FF6600"
+            }).then(() => {
+                document.getElementById("resetPasswordForm").submit();
+            });
+        });
+
+        function togglePassword(inputId, iconId) {
+            let input = document.getElementById(inputId);
+            let icon = document.getElementById(iconId);
+
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("bi-eye");
+                icon.classList.add("bi-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.remove("bi-eye-slash");
+                icon.classList.add("bi-eye");
+            }
+        }
+    </script>
+</body>
 </html>
