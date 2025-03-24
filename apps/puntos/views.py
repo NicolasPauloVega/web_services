@@ -60,33 +60,26 @@ def puntos_evidencia(request, id_usuario):
 @login_required(login_url='/accounts/login/')
 @user_passes_test(is_staff, login_url='/')
 def estadistica(request):
-    usuarios = Usuarios.objects.values('nombres', 'apellidos', 'puntos_totales')
+    usuarios = list(Usuarios.objects.values('nombres', 'apellidos', 'puntos_totales'))
 
     if not usuarios:  # Si no hay usuarios, devolver datos vacíos
         return JsonResponse({"error": "No hay usuarios registrados"}, status=400)
 
-    mejor_usuario = max(usuarios, key=lambda x: x['puntos_totales'])
-    peor_usuario = min(usuarios, key=lambda x: x['puntos_totales'])
+    max_puntos = max(usuarios, key=lambda x: x['puntos_totales'])['puntos_totales']
+    min_puntos = min(usuarios, key=lambda x: x['puntos_totales'])['puntos_totales']
+
+    mejores_usuarios = [u for u in usuarios if u['puntos_totales'] == max_puntos]
+    peores_usuarios = [u for u in usuarios if u['puntos_totales'] == min_puntos]
 
     data = {
-        "mejor": {
-            "nombre": mejor_usuario['nombres'],
-            "apellidos": mejor_usuario['apellidos'],
-            "puntos": mejor_usuario['puntos_totales']
-        },
-        "peor": {
-            "nombre": peor_usuario['nombres'],
-            "apellidos": peor_usuario['apellidos'],
-            "puntos": peor_usuario['puntos_totales']
-        },
-        "todos": [
-            {"nombre": usuario['nombres'], "apellidos": usuario['apellidos'], "puntos": usuario['puntos_totales']}
-            for usuario in usuarios
-        ]
+        "mejores": [{"nombre": u['nombres'], "apellidos": u['apellidos'], "puntos": u['puntos_totales']} for u in mejores_usuarios],
+        "peores": [{"nombre": u['nombres'], "apellidos": u['apellidos'], "puntos": u['puntos_totales']} for u in peores_usuarios],
+        "todos": [{"nombre": u['nombres'], "apellidos": u['apellidos'], "puntos": u['puntos_totales']} for u in usuarios]
     }
 
     return JsonResponse(data)
 
+@login_required(login_url='/accounts/login/')
 @user_passes_test(is_staff)
 def estadisticas_views(request):
     return render(request, 'estadisticas.html')

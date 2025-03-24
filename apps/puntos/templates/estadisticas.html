@@ -13,12 +13,12 @@
         <div class="card-body">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div class="text-start">
-                    <h5 class="text-success fw-bold">🏆 Mejor Usuario</h5>
-                    <p id="mejor" class="fs-5"></p>
+                    <h5 class="text-success fw-bold">🏆 Mejor Usuario(s)</h5>
+                    <ul id="mejor" class="fs-5"></ul>
                 </div>
                 <div class="text-end">
-                    <h5 class="text-danger fw-bold">💀 Peor Usuario</h5>
-                    <p id="peor" class="fs-5"></p>
+                    <h5 class="text-danger fw-bold">💀 Peor Usuario(s)</h5>
+                    <ul id="peor" class="fs-5"></ul>
                 </div>
             </div>
             <canvas id="graficoPuntos"></canvas>
@@ -30,21 +30,38 @@
     fetch("{% url 'datos_graficos' %}")
     .then(response => response.json())
     .then(data => {
-        // Verificar si hay un error en la respuesta
         if (data.error) {
             console.error(data.error);
             return;
         }
 
-        // Configurar Chart.js
+        // Insertar los mejores usuarios
+        const mejorLista = document.getElementById("mejor");
+        mejorLista.innerHTML = ""; // Limpiar antes de agregar nuevos datos
+        data.mejores.forEach(user => {
+            const li = document.createElement("li");
+            li.innerHTML = `<strong>${user.nombre} ${user.apellidos}</strong> (${user.puntos})`;
+            mejorLista.appendChild(li);
+        });
+
+        // Insertar los peores usuarios
+        const peorLista = document.getElementById("peor");
+        peorLista.innerHTML = ""; // Limpiar antes de agregar nuevos datos
+        data.peores.forEach(user => {
+            const li = document.createElement("li");
+            li.innerHTML = `<strong>${user.nombre} ${user.apellidos}</strong> (${user.puntos})`;
+            peorLista.appendChild(li);
+        });
+
+        // Configurar gráfico de Chart.js
         const ctx = document.getElementById('graficoPuntos').getContext('2d');
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: data.todos.map(user => `${user.nombre} ${user.apellidos}`),  // Corregido
+                labels: data.todos.map(user => `${user.nombre} ${user.apellidos}`),
                 datasets: [{
                     label: 'Puntos Totales',
-                    data: data.todos.map(user => user.puntos),  // Corregido
+                    data: data.todos.map(user => user.puntos),
                     backgroundColor: 'rgba(0, 200, 100, 0.7)'
                 }]
             },
@@ -55,10 +72,6 @@
                 }
             }
         });
-
-        // Mostrar el mejor y peor usuario
-        document.getElementById("mejor").innerHTML = `<strong>${data.mejor.nombre} ${data.mejor.apellidos}</strong> (${data.mejor.puntos})`;
-        document.getElementById("peor").innerHTML = `<strong>${data.peor.nombre} ${data.peor.apellidos}</strong> (${data.peor.puntos})`;
     })
     .catch(error => console.error('Error al obtener los datos:', error));
 </script>
