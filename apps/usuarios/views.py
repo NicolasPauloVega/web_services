@@ -66,9 +66,12 @@ def ingresar(request):
             user = authenticate(request, username = username, password = password)
             
             if user is not None:
-                login(request, user)
-                messages.success(request, "Inicio de sesión exitoso")
-                return redirect('inicio')
+                if user.is_active:
+                    login(request, user)
+                    messages.success(request, "Inicio de sesión exitoso")
+                    return redirect('inicio')
+                else:
+                    messages.error(request, "Tu cuenta está desactivada. Contacta al administrador.")
             else:
                 form.add_error(None, "Número de documento o contraseña incorrectos")
         else:

@@ -167,21 +167,23 @@
                         </thead>
                         <tbody>
                             {% for usuario in usuario %}
-                            <tr>
-                                <td>
-                                    {% if usuario.avatar %}
-                                        <img src="{{ usuario.avatar.url }}"  class="img-thumbnail rounded-circle" style="width: 80px; height: 80px;">
-                                    {% else %}
-                                        <img src="{% static 'img/avataaars.svg' %}"  class="img-thumbnail rounded-circle" style="width: 80px; height: 80px;">
-                                    {% endif %}
-                                </td>
-                                <td>{{ usuario.nombres }} {{ usuario.apellidos }}</td>
-                                <td>{{ usuario.numero_documento }}</td>
-                                <td>{{ usuario.correo }}</td>
-                                <td>{{ usuario.puntos_totales }}</td>
-                            </tr>
+                                {% if usuario.is_active %}
+                                    <tr>
+                                        <td>
+                                            {% if usuario.avatar %}
+                                                <img src="{{ usuario.avatar.url }}" class="img-thumbnail rounded-circle" style="width: 80px; height: 80px;">
+                                            {% else %}
+                                                <img src="{% static 'img/avataaars.svg' %}" class="img-thumbnail rounded-circle" style="width: 80px; height: 80px;">
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ usuario.nombres }} {{ usuario.apellidos }}</td>
+                                        <td>{{ usuario.numero_documento }}</td>
+                                        <td>{{ usuario.correo }}</td>
+                                        <td>{{ usuario.puntos_totales }}</td>
+                                    </tr>
+                                {% endif %}
                             {% endfor %}
-                        </tbody>
+                        </tbody>                        
                     </table>
                     <nav>
                         <ul class="pagination justify-content-center">
