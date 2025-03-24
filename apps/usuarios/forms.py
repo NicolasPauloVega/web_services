@@ -72,3 +72,13 @@ class UsuarioUpdateForm(forms.ModelForm):
     def clean_numero_documento(self):
         """Evita que el usuario modifique su número de documento"""
         return self.instance.numero_documento  # Retorna el valor actual sin cambios
+    
+# Cambiar contraseña
+class PasswordResetRequestForm(forms.Form):
+    correo = forms.EmailField(label="Correo electrónico", max_length=255, widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese su correo'}))
+
+    def clean_correo(self):
+        correo = self.cleaned_data['correo']
+        if not Usuarios.objects.filter(correo=correo).exists():
+            raise forms.ValidationError("No existe una cuenta con este correo.")
+        return correo

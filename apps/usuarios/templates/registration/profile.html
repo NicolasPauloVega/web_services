@@ -80,7 +80,7 @@
                                     </ul>
 
                                     <div class="mb-3">
-                                        <a href="{% url 'evidences' usuario.numero_documento %}" class="btn btn-sm">
+                                        <a href="{% url 'puntos_evidencias' usuario.numero_documento %}" class="btn btn-sm">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>                                        
                                     </div>
@@ -89,6 +89,12 @@
                                         <a href="{% url 'salir' %}" class="btn btn-danger">
                                             <i class="fa-solid fa-right-to-bracket"></i> Cerrar Sesión
                                         </a>
+                                    </div>
+
+                                    <div class="mt-4">
+                                        <p class="text-center">
+                                            <a href="{% url 'cambiar_pass' %}" class="btn btn-lg w-50 text-white" style="background-color: #FF6600;">¿Olvidaste tu contraseña?</a>
+                                        </p>                                        
                                     </div>
                                 {% endfor %}
                             </div>

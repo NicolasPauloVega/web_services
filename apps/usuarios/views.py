@@ -10,6 +10,11 @@ from django.db.models import Q
 from django.core.paginator import Paginator
 from django.utils.timezone import now
 from django.http import HttpResponseForbidden
+from django.contrib import messages
+from django.core.mail import send_mail
+from django.utils.crypto import get_random_string
+from .forms import PasswordResetRequestForm
+from django.contrib.auth.hashers import make_password
 
 def is_staff(user):
     return user.is_active and user.is_staff # Validar si es administrador y esta activo
@@ -225,3 +230,53 @@ def evidencias_points(request, id_usuario):
 @user_passes_test(is_staff, login_url=('/'))
 def profile_superuser(request):
     return render(request, 'admin_dashboard/profile.html')
+
+def solicitar_restauracion(request):
+    if request.method == "POST":
+        form = PasswordResetRequestForm(request.POST)
+        if form.is_valid():
+            correo = form.cleaned_data['correo']
+            usuario = Usuarios.objects.get(correo=correo)
+            
+            # Generar un token de recuperación
+            token = get_random_string(length=50)
+            usuario.password = token  # Temporalmente almacena el token como clave
+            usuario.save()
+
+            # Enviar correo con el enlace para restablecer contraseña
+            reset_link = f"http://127.0.0.1:8000/cambiar_contraseña_confirmar/{token}/"
+            send_mail(
+                'Restablecer tu contraseña',
+                f'Hola {usuario.nombres}, usa este enlace para restablecer tu contraseña: {reset_link}',
+                'noreply@tuapp.com',
+                [correo],
+                fail_silently=False,
+            )
+
+            messages.success(request, "Se ha enviado un correo con las instrucciones para restablecer tu contraseña.")
+            return redirect('ingresar')
+    else:
+        form = PasswordResetRequestForm()
+
+    return render(request, 'auth/cambiar_pass.html', {'form': form})
+
+def restablecer_contraseña(request, token):
+    try:
+        usuario = Usuarios.objects.get(password=token)  # Busca el usuario con el token
+    except Usuarios.DoesNotExist:
+        messages.error(request, "El enlace no es válido o ha expirado.")
+        return redirect('ingresar')
+
+    if request.method == "POST":
+        nueva_password = request.POST['nueva_password']
+        confirmar_password = request.POST['confirmar_password']
+
+        if nueva_password != confirmar_password:
+            messages.error(request, "Las contraseñas no coinciden.")
+        else:
+            usuario.password = make_password(nueva_password)  # Guarda la nueva contraseña hasheada
+            usuario.save()
+            messages.success(request, "Tu contraseña ha sido restablecida correctamente.")
+            return redirect('ingresar')
+
+    return render(request, 'auth/cambiar_pass_confirmar.html', {'token': token})

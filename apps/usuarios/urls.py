@@ -2,10 +2,14 @@ from django.urls import path, include
 from .views import *
 from apps.puntos.views import *
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     # Visualización de usuarios
     path('', login_required(inicio), name="inicio"),
+    # Cambiar contraseña
+    path('cambiar_contraseña/', solicitar_restauracion, name='cambiar_pass'),
+    path('cambiar_contraseña_confirmar/<str:token>/', restablecer_contraseña, name='cambiar_pass_confirmar'),
     # Validacion de usuarios
     path('accounts/login/', ingresar, name="ingresar"),
     path('accounts/logout/', login_required(salir), name="salir"),
@@ -13,7 +17,7 @@ urlpatterns = [
     # Perfil de usuario
     path('perfil_usuario/<int:id_usuario>', login_required(profile), name="perfil"),
     # Evidencias de usuario
-    path('evidencias/<int:id_usuario>', login_required(evidencias_points), name="puntos"),
+    path('evidencias/<int:id_usuario>', login_required(evidencias_points), name="puntos_evidencias"),
     # Administración
     path('admin_panel/', login_required(admin_dashboard), name="admin_panel"),
     # Administración usuarios
