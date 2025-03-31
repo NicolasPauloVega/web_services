@@ -5,6 +5,10 @@ from .forms import PuntosForm
 from django.http import JsonResponse
 from django.contrib.auth.decorators import user_passes_test, login_required
 
+# Configuraciones excel
+from django.http import HttpResponse
+from .utils import generar_excel_usuarios
+
 def is_staff(user):
     return user.is_active and user.is_staff # Validar si es administrador y esta activo
 
@@ -83,3 +87,18 @@ def estadistica(request):
 @user_passes_test(is_staff)
 def estadisticas_views(request):
     return render(request, 'estadisticas.html')
+
+@login_required(login_url='/accounts/login')
+@user_passes_test(is_staff)
+def exportar_excel(request):
+    output = generar_excel_usuarios()
+
+    if not output:
+        return HttpResponse("No hay datos disponibles", status=400)
+
+    response = HttpResponse(
+        output.getvalue(),
+        content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
+    response["Content-Disposition"] = 'attachment; filename="estadisticas_usuarios.xlsx"'
+    return response
