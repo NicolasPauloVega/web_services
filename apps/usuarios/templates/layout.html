@@ -53,28 +53,15 @@
         <!-- Masthead-->
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
-                {% if user.is_authenticated %}
-                    <!-- Mostrar avatar personalizado si el usuario está autenticado -->
-                    {% if user.avatar %}
-                        <img class="masthead-avatar mb-5 rounded-circle" src="{{ user.avatar.url }}" alt="Avatar de {{ user.nombres }}">
-                    {% else %}
-                        <img class="masthead-avatar mb-5 rounded-circle" src="{% static 'img/avataaars.svg' %}" alt="Avatar predeterminado">
-                    {% endif %}
-                    
-                    <!-- Nombre de usuario -->
-                    <h1 class="masthead-heading text-uppercase mb-0">
-                        BIENVENIDO
-                        <br><br>
-                        {{ user.nombres }} {{ user.apellidos }}
-                    </h1>
-                    
-                {% else %}
-                    <!-- Mostrar avatar predeterminado si no está autenticado -->
-                    <img class="masthead-avatar mb-5 rounded-circle" src="{% static 'img/avataaars.svg' %}" alt="Avatar predeterminado">
-                    
-                    <!-- Mensaje genérico -->
-                    <h1 class="masthead-heading text-uppercase mb-0">BIENVENIDO</h1>
-                {% endif %}
+                
+                <!-- Logo de la empresa -->
+                <img src="{% static "img/slogan.png" %}" alt="slogan" style="width: 50%;"><br><br>
+
+                <!-- Nombre de la compañia -->
+                <h1 class="masthead-heading text-uppercase mb-0">
+                    BFT
+                </h1>
+
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
@@ -113,7 +100,7 @@
                     <div class="col-lg-4">
                         <h4 class="text-uppercase mb-4">DESARROLLO</h4>
                         <p class="lead mb-0">
-                            Proyecto desarrollado en python mediante.
+                            Proyecto desarrollado en python mediante Django.
                         </p>
                     </div>
                 </div>
@@ -121,8 +108,8 @@
         </footer>
         
         <!-- Copyright Section-->
-        <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright &copy; BIENESTAR Y FELICIDAD TOLIMA</small></div>
+        <div class="copyright py-4 text-center text-white" style="background-color: #fd7e14 !important; color: white;">
+            <div class="container"><h5>Copyright &copy; BIENESTAR Y FELICIDAD TOLIMA</h5></div>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

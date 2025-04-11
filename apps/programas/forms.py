@@ -8,3 +8,12 @@ class FormProgramas(forms.ModelForm):
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre del programa'}),
         }
+        
+class FormActualizarPrograma(forms.ModelForm):
+    
+    class Meta:
+        model = Programa
+        fields = ['nombre']
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre del programa'}),
+        }

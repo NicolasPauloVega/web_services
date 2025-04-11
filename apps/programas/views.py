@@ -48,3 +48,21 @@ def eliminar_programa(request, id_programa):
     programa.delete()
     messages.success(request, 'El programa ha sido eliminado exitosamente')
     return redirect('programas')
+
+@login_required(login_url='/accounts/login/')
+@user_passes_test(is_staff, login_url='/')
+def actualizar_programa(request, id_programa):
+    programa = get_object_or_404(Programa, id=id_programa)
+    
+    if request.method == 'POST':
+        form = FormActualizarPrograma(request.POST, instance=programa)
+        if form.is_valid():
+            form.save()
+            messages.success(request, '¡Se actualizó correctamente la actividad!')
+            return redirect('programas')
+        else:
+            messages.error(request, '¡No se pudo actualizar la actividad!')
+    else:
+        form = FormActualizarPrograma(instance=programa)
+
+    return render(request, 'update_programas.html', {'form': form, 'programa': programa})

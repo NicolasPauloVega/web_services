@@ -26,9 +26,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#programas">Programas</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#objetivo">Objetivo</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#usuarios">Usuarios</a></li>
                         {% if user.is_authenticated %}
                             {% if user.is_staff %}
                                 <li class="nav-item mx-0 mx-lg-1">
@@ -72,6 +69,7 @@
                             <table class="table table-striped table-hover table-bordered align-middle">
                                 <thead style="background-color: orange; color: white;">
                                     <tr>
+                                        <th>#</th>
                                         <th>PROGRAMA</th>
                                         <th>ACTIVIDAD</th>
                                         <th>FECHA</th>
@@ -80,13 +78,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for evidencias in puntos %}
+                                    {% for evidencia in puntos %}
                                     <tr>
                                         <td scope="col">{{ forloop.counter }}</td>
                                         <td>{{ evidencia.programa }}</td>
                                         <td>{{ evidencia.actividad.nombre }}</td>
-                                        <td>{{ evidencia.puntos }}</td>
                                         <td>{{ evidencia.fecha }}</td>
+                                        <td>{{ evidencia.puntos }}</td>
                                         <td>
                                             {% if evidencia.evidencia %}
                                                 <a href="{{ evidencia.evidencia.url }}" target="_blank" class="btn btn-sm btn-primary">
@@ -163,8 +161,8 @@
         </footer>
         
         <!-- Copyright Section-->
-        <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright &copy; BIENESTAR Y FELICIDAD TOLIMA</small></div>
+        <div class="copyright py-4 text-center text-white" style="background-color: #fd7e14 !important; color: white;">
+            <div class="container"><h5>Copyright &copy; BIENESTAR Y FELICIDAD TOLIMA</h5></div>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

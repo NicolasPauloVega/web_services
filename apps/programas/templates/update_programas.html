@@ -1,17 +1,17 @@
 {% extends "admin_dashboard/layout.html" %}
 {% load static %}
-{% block title %}Editar actividad{% endblock %}
+{% block title %}Editar programa{% endblock %}
 {% block content %}
 <!-- Main Content -->
 <main class="content px-3 py-2">
     <div class="card border-0">
         <div class="card-header">
             <h2 class="card-title">
-                Editar actividad
+                Editar programa
             </h2>
 
             <h6 class="card-subtitle text-muted">
-                Podras editar una actividad con su nombre y la asignación de puntos
+                Podras cambiarle el nombre a un programa.
             </h6>
         </div>
         <div class="card-body">
@@ -34,7 +34,7 @@
                     </script>
                 {% endif %}
 
-                <input type="hidden" value="{{ actividad.id }}">
+                <input type="hidden" value="{{ programa.id }}">
 
                 <div style="display: none;">
                     {{ form.programa }}
@@ -45,14 +45,9 @@
                     {{ form.nombre }}
                 </div>
 
-                <div class="mb-3">
-                    <label for="puntos" class="form-label">Puntos</label>
-                    {{ form.puntos }}
-                </div>
-
                 <button type="submit" class="btn btn-warning w-100">Guardar cambios</button>
                 <br><br>
-                <a href="{% url 'actividades' %}" class="btn btn-danger w-100">Cancelar</a>
+                <a href="{% url 'programas' %}" class="btn btn-danger w-100">Cancelar</a>
             </form>
         </div>
     </div>
