@@ -45,6 +45,11 @@
                     {{ form.nombre }}
                 </div>
 
+                <div class="mb-3">
+                    <label for="imagen" class="label-control">Imagen</label>
+                    {{ form.imagen }}
+                </div>
+
                 <button type="submit" class="btn btn-warning w-100">Guardar cambios</button>
                 <br><br>
                 <a href="{% url 'programas' %}" class="btn btn-danger w-100">Cancelar</a>

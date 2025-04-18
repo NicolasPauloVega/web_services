@@ -15,7 +15,7 @@
             </h6>
         </div>
         <div class="card-body">
-            <form method="POST" class="p-4 shadow-lg rounded">
+            <form method="POST" class="p-4 shadow-lg rounded" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 {% if messages %}
@@ -39,6 +39,11 @@
                     <br>
                     <br>
                     {{ form.nombre }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="imagen" class="label-control">Imagen</label>
+                    {{ form.imagen }}
                 </div>
             
                 <button type="submit" class="btn btn-warning w-100">Crear Programa</button>

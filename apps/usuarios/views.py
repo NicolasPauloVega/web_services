@@ -17,6 +17,8 @@ from .forms import PasswordResetRequestForm
 from django.contrib.auth.hashers import make_password
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from apps.programas.models import *
+from apps.actividades.models import *
 
 def is_staff(user):
     return user.is_active and user.is_staff # Validar si es administrador y esta activo
@@ -37,7 +39,8 @@ def inicio(request):
     paginator = Paginator(usuarios,10) # tomar 10 usuarios para paginar
     page_number = request.GET.get('page') # Paginar
     usuarios_paginados = paginator.get_page(page_number) # Mostrar los usuarios paginados
-    return render(request, 'blog.html', {'usuario': usuarios_paginados, 'query': query})
+    
+    return render(request, 'blog.html', {'usuarios': usuarios_paginados, 'query': query})
 
 @login_required(login_url='/accounts/login/')
 @user_passes_test(is_staff, login_url='/')
