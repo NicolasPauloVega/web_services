@@ -40,7 +40,7 @@ def inicio(request):
     page_number = request.GET.get('page') # Paginar
     usuarios_paginados = paginator.get_page(page_number) # Mostrar los usuarios paginados
     
-    return render(request, 'blog.html', {'usuarios': usuarios_paginados, 'query': query})
+    return render(request, 'blog.html', {'usuario': usuarios_paginados, 'query': query})
 
 @login_required(login_url='/accounts/login/')
 @user_passes_test(is_staff, login_url='/')

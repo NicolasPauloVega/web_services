@@ -6,7 +6,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     # Visualización de usuarios
-    path('', login_required(inicio), name="inicio"),
+    path('', inicio, name="inicio"),
     # Cambiar contraseña
     path('cambiar_contraseña/', solicitar_restauracion, name='cambiar_pass'),
     path('cambiar_contraseña_confirmar/<str:token>/', restablecer_contraseña, name='cambiar_pass_confirmar'),
