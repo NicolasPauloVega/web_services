@@ -231,7 +231,28 @@ def evidencias_points(request, id_usuario):
     puntos_paginados = paginator.get_page(page_number)
 
     return render(request, 'registration/evidence.html', {
-        'puntos': puntos_paginados, 
+        'puntos': puntos_paginados,
+        'query': query,
+    })
+    
+@login_required(login_url='/accounts/login/')
+def admin_evidencias_points(request, id_usuario):
+    puntos = Puntos.objects.filter(usuario=id_usuario)
+    query = request.GET.get('q', '')
+
+    if query:
+        puntos = puntos.filter(
+            Q(programa__nombre__icontains=query) |
+            Q(actividad__nombre__icontains=query)
+        )
+
+    # Paginación
+    paginator = Paginator(puntos, 10)
+    page_number = request.GET.get('page')
+    puntos_paginados = paginator.get_page(page_number)
+
+    return render(request, 'admin_dashboard/evidence.html', {
+        'puntos': puntos_paginados,
         'query': query,
     })
     

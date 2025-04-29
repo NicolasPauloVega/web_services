@@ -18,6 +18,7 @@ urlpatterns = [
     path('perfil_usuario/<int:id_usuario>', login_required(profile), name="perfil"),
     # Evidencias de usuario
     path('evidencias/<int:id_usuario>', login_required(evidencias_points), name="puntos_evidencias"),
+    path('evidencias-usuario/<int:id_usuario>', login_required(admin_evidencias_points), name="admin_puntos_evidencias"),
     # Administración
     path('admin_panel/', login_required(admin_dashboard), name="admin_panel"),
     # Administración usuarios

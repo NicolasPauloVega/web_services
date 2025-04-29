@@ -61,7 +61,7 @@
                             <td>{{ usuarios.correo }}</td>
                             <td>{{ usuarios.puntos_totales }}</td>
                             <td><a href="{% url "act_usuario" usuarios.numero_documento %}" class="text-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                            <td class="text-center"><a href="{% url "puntos_evidencia" usuarios.numero_documento %}" class="text-prymary"><i class="fa-solid fa-eye"></i></a></td>
+                            <td class="text-center"><a href="{% url "admin_puntos_evidencias" usuarios.numero_documento %}" class="text-prymary"><i class="fa-solid fa-eye"></i></a></td>
                             <td class="text-center"><a href="{% url "puntos" usuarios.numero_documento %}" class="text-success"><i class="fa-solid fa-heart-pulse"></i></a></td>
                         </tr>
                     {% endfor %}
