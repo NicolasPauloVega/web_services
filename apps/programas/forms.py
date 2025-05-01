@@ -4,7 +4,7 @@ from .models import *
 class FormProgramas(forms.ModelForm):
     class Meta:
         model = Programa
-        fields = ['nombre', 'imagen']
+        fields = ['nombre']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre del programa'}),
         }
@@ -13,7 +13,7 @@ class FormActualizarPrograma(forms.ModelForm):
     
     class Meta:
         model = Programa
-        fields = ['nombre', 'imagen']
+        fields = ['nombre']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre del programa'}),
         }

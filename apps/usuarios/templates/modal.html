@@ -1,6 +1,6 @@
 {% load static %}
-<!-- Modals--
-<!-- Modal 1-->
+<!-- Modals-->
+<!-- Modal Hábitos saludables -->
 <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -120,7 +120,7 @@
     </div>
 </div>
 
-<!-- Modal 2-->
+<!-- Modal Medio ambiente -->
 <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -173,44 +173,74 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td rowspan="9">MEDIO AMBIENTE</td>
+                                            <td rowspan="14">MEDIO AMBIENTE</td>
                                             <td>DEJA LUCES APAGADAS</td>
                                             <td>100</td>
-                                            <td></td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DEJA COMPUTADOR APAGADO</td>
+                                            <td>100</td>
+                                            <td>-</td>
                                         </tr>
                                         <tr>
                                             <td>DEJA AIRE ACONDICIONADO APAGADO</td>
                                             <td>100</td>
-                                            <td></td>
+                                            <td>-</td>
                                         </tr>
                                         <tr>
                                             <th>DEJA LAVAMANOS Y/O LAVAPLATOS CERRADO</th>
                                             <th>100</th>
-                                            <td></td>
+                                            <td>-</td>
                                         </tr>
                                         <tr>
                                             <td>IMPRIME EN PAPEL RECICLABLE</td>
                                             <th>100</th>
-                                            <td></td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>IMPRIME SOLO LO NECESARIO</td>
+                                            <td>100</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>APAGA LA IMPRESORA CUANDO NADIE LA NECESITA</td>
+                                            <td>100</td>
+                                            <td>-</td>
                                         </tr>
                                         <tr>
                                             <td>DEJA LUCES PRENDIDAS</td>
-                                            <td></td>
+                                            <td>-</td>
+                                            <td>100</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DEJA COMPUTADOR PRENDIDO</td>
+                                            <td>-</td>
                                             <td>100</td>
                                         </tr>
                                         <tr>
                                             <td>DEJA AIRE ACONDICIONADO PRENDIDO</td>
-                                            <td></td>
+                                            <td>-</td>
                                             <td>100</td>
                                         </tr>
                                         <tr>
                                             <td>DEJA MANOS Y/O LAVAPLATOS ABIERTO</td>
-                                            <td></td>
+                                            <td>-</td>
+                                            <td>100</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NO IMPRIME EN PAPEL RECICLABLE</td>
+                                            <td>-</td>
                                             <td>100</td>
                                         </tr>
                                         <tr>
                                             <td>REIMPRIME INNECESARIAMENTE</td>
-                                            <td></td>
+                                            <td>-</td>
+                                            <td>100</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NO APAGA LA IMPRESORA CUANDO NADIE LA NECESITA</td>
+                                            <td>-</td>
                                             <td>100</td>
                                         </tr>
                                     </tbody>
@@ -234,7 +264,7 @@
     </div>
 </div>
 
-<!-- Modal 3 -->
+<!-- Modal Reciclaje -->
 <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -286,31 +316,31 @@
                                             <td rowspan="6">RECICLAJE</td>
                                             <td>UTILIZA ADECUADAMENTE CANECA BLANCA</td>
                                             <td>100</td>
-                                            <td></td>
+                                            <td>-</td>
                                         </tr>
                                         <tr>
                                             <td>UTILIZA ADECUADAMENTE CANECA NEGRA</td>
                                             <td>100</td>
-                                            <td></td>
+                                            <td>-</td>
                                         </tr>
                                         <tr>
                                             <td>UTILIZA ADECUADAMENTE CANECA VERDE</td>
                                             <td>100</td>
-                                            <td></td>
+                                            <td>-</td>
                                         </tr>
                                         <tr>
                                             <td>NO UTILIZA ADECUADAMENTE CANECA BLANCA</td>
-                                            <td></td>
+                                            <td>-</td>
                                             <td>100</td>
                                         </tr>
                                         <tr>
                                             <td>NO UTILIZA ADECUADAMENTE CANECA NEGRA</td>
-                                            <td></td>
+                                            <td>-</td>
                                             <td>100</td>
                                         </tr>
                                         <tr>
                                             <td>NO UTILIZA ADECUADAMENTE CANECA VERDE</td>
-                                            <td></td>
+                                            <td>-</td>
                                             <td>100</td>
                                         </tr>
                                     </tbody>
@@ -334,7 +364,7 @@
     </div>
 </div>
 
-<!-- Modal 4 -->
+<!-- Modal Botellitas de amor -->
 <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -355,14 +385,9 @@
                             <img class="img-fluid rounded mb-5" src="{% static "img/usuario/botella.png" %}" alt="..." />
                             <!-- Text -->
                             <p class="mb-4">
-                                Botellitas de Amor es un programa importante porque integra el reciclaje con la solidaridad social y el respeto por el medio ambiente. Convierte los plásticos que suelen terminar en el suelo, ríos y océanos en material útil para la construcción de viviendas y parques infantiles destinados a personas en situación de vulnerabilidad. De esta manera, promueve una economía circular y contribuye a la solución de problemas sociales y ambientales.
+                                Para este programa el trabajador debe enfocarse en recolectar y reciclar plásticos como envoltorios de golosinas y bolsas, y depositarlos en una Botella pipona mayor a 2 litros para obtener 500 puntos, <strong>o en su defecto una mayor a 250 cc hasta 2 litros para obtener 300 puntos</strong>, las cuales deben estar completamente compactadas y certificadas por un miembro del Voluntariado Ambiental. Las botellas pueden reciclarse desde casa o reciclarse en la oficina; pero si no presenta botellitas en el mes, se hará efectiva la resta de puntos correspondientes.
                             </p>
-                            <p class="mb-4">
-                                Para este programa, el trabajador debe enfocarse en recolectar y reciclar plásticos como envoltorios de golosinas y bolsas, depositándolos en una botella pipona mayor a 2 litros para obtener 500 puntos o, en su defecto, en una botella mayor a 250 cc, que otorga 300 puntos.
-                            </p>
-                            <p class="mb-4">
-                                Las botellas deben estar completamente compactadas y certificadas por un miembro del Voluntariado Ambiental. Se pueden reciclar tanto en casa como en la oficina. Sin embargo, si el trabajador no presenta botellitas durante el mes, se le restarán los puntos correspondientes.
-                            </p>
+                            <br>
                             <div class="table-responsive">
                                 <table class="table table-striped table-hover table-bordered">
                                     <thead style="background-color: orange; color: white;">
@@ -378,21 +403,21 @@
                                             <td rowspan="4">BOTELLITAS DE AMOR</td>
                                             <td>BOTELLA MAYOR A 2 LITROS</td>
                                             <td>500</td>
-                                            <td></td>
+                                            <td>-</td>
                                         </tr>
                                         <tr>
                                             <td>BOTELLA MAYOR A 250 CC</td>
                                             <td>300</td>
-                                            <td></td>
+                                            <td>-</td>
                                         </tr>
                                         <tr>
                                             <td>NO PRESENTA BOTELLA MAYOR A 2 LITROS</td>
-                                            <td></td>
+                                            <td>-</td>
                                             <td>500</td>
                                         </tr>
                                         <tr>
                                             <td>NO PRESENTA BOTELLA MAYOR A 250 CC</td>
-                                            <td></td>
+                                            <td>-</td>
                                             <td>300</td>
                                         </tr>
                                     </tbody>
@@ -416,7 +441,7 @@
     </div>
 </div>
 
-<!-- Modal 5-->
+<!-- Modal Coala -->
 <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -454,11 +479,11 @@
                                             <td rowspan="2">COALA</td>
                                             <td>CUMPLE CON COALA</td>
                                             <td>200</td>
-                                            <td></td>
+                                            <td>-</td>
                                         </tr>
                                         <tr>
                                             <td>NO CUMPLE CON COALA</td>
-                                            <td></td>
+                                            <td>-</td>
                                             <td>200</td>
                                         </tr>
                                     </tbody>
@@ -476,7 +501,7 @@
     </div>
 </div>
 
-<!-- Modal 6-->
+<!-- Modal Tapitas positivas -->
 <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -517,14 +542,39 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td rowspan="2">TAPITAS POSITIVAS</td>
+                                            <td rowspan="8">TAPITAS POSITIVAS</td>
                                             <td>ENTREGA MINIMO 10 TAPITAS</td>
                                             <td>100</td>
-                                            <td></td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ENTREGA MINIMO 30 TAPITAS</td>
+                                            <td>300</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ENTREGA MINIMO 50 TAPITAS</td>
+                                            <td>500</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ENTREGA MINIMO 100 TAPITAS</td>
+                                            <td>1000</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ENTREGA MINIMO 200 TAPITAS</td>
+                                            <td>200</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ENTREGA MINIMO 300 TAPITAS</td>
+                                            <td>300</td>
+                                            <td>-</td>
                                         </tr>
                                         <tr>
                                             <td>NO ENTREGA TAPITAS POR MES</td>
-                                            <td></td>
+                                            <td>-</td>
                                             <td>100</td>
                                         </tr>
                                     </tbody>
@@ -548,7 +598,7 @@
     </div>
 </div>
 
-<!-- Modal 7 -->
+<!-- Modal Seguridad de la información -->
 <div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -586,31 +636,31 @@
                                             <td rowspan="6">SEGURIDAD DE LA INFORMACION</td>
                                             <td>DEJO LAS CAJONERAS ASEGURADAS CON LLAVE</td>
                                             <td>100</td>
-                                            <td></td>
+                                            <td>-</td>
                                         </tr>
                                         <tr>
                                             <td>USO CARNÉ EN UN SITIO VISIBLE</td>
                                             <td>100</td>
-                                            <td></td>
+                                            <td>-</td>
                                         </tr>
                                         <tr>
                                             <td>DEJO MI EQUIPO BLOQUEADO CUANDO ME LEVANTO DEL ESCRITORIO</td>
                                             <td>100</td>
-                                            <td></td>
+                                            <td>-</td>
                                         </tr>
                                         <tr>
                                             <td>NO DEJO LAS CAJONERAS ASEGURADAS CON LLAVE</td>
-                                            <td></td>
+                                            <td>-</td>
                                             <td>100</td>
                                         </tr>
                                         <tr>
                                             <td>NO USO CARNÉ EN UN SITIO VISIBLE</td>
-                                            <td></td>
+                                            <td>-</td>
                                             <td>100</td>
                                         </tr>
                                         <tr>
                                             <td>NO DEJO MI EQUIPO BLOQUEADO CUANDO ME LEVANTO DEL ESCRITORIO</td>
-                                            <td></td>
+                                            <td>-</td>
                                             <td>100</td>
                                         </tr>
                                     </tbody>
@@ -628,7 +678,133 @@
     </div>
 </div>
 
-<!-- Modal 8 -->
+<!-- Modal Ponte pilas con las pilas -->
+<div class="portfolio-modal modal fade" id="portfolioModal8" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+            <div class="modal-body text-center pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <!-- Title -->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">PONTE PILAS CON LAS PILAS</h2>
+                            <!-- Icon -->
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+                            <!-- Image -->
+                            <img class="img-fluid rounded mb-5" src="{% static "img/usuario/seguridad.png" %}" alt="..." />
+                            <!-- Text -->
+                            <p class="mb-4"></p>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover table-bordered">
+                                    <thead style="background-color: orange; color: white;">
+                                        <tr>
+                                            <th>PROGRAMA</th>
+                                            <th>ACTIVIDADES</th>
+                                            <th>PUNTOS A FAVOR</th>
+                                            <th>PUNTOS EN CONTRA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td rowspan="4">PONTE PILAS CON LAS PILAS</td>
+                                            <td>RECICLA 5 PILAS</td>
+                                            <td>100</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>RECICLA 10 PILAS</td>
+                                            <td>200</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>RECICLA 15 PILAS</td>
+                                            <td>300</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NO RECICLA PILAS</td>
+                                            <td>-</td>
+                                            <td>100</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div><br><br>
+                            <button class="btn btn-danger" data-bs-dismiss="modal">
+                                <i class="fas fa-xmark fa-fw"></i>
+                                Cerrar ventana
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Conociendo crezco -->
+<div class="portfolio-modal modal fade" id="portfolioModal9" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header border-0"><button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+            <div class="modal-body text-center pb-5">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <!-- Title -->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">CONOCIENDO CREZCO</h2>
+                            <!-- Icon -->
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+                            <!-- Image -->
+                            <img class="img-fluid rounded mb-5" src="{% static "img/usuario/seguridad.png" %}" alt="..." />
+                            <!-- Text -->
+                            <p class="mb-4"></p>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover table-bordered">
+                                    <thead style="background-color: orange; color: white;">
+                                        <tr>
+                                            <th>PROGRAMA</th>
+                                            <th>ACTIVIDADES</th>
+                                            <th>PUNTOS A FAVOR</th>
+                                            <th>PUNTOS EN CONTRA</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td rowspan="2">CONOCIENDO CREZCO</td>
+                                            <td>PARTICIPA EN CAPACITACIÓN</td>
+                                            <td>200</td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NO PARTICIPA EN CAPACITACIÓN</td>
+                                            <td>200</td>
+                                            <td>-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div><br><br>
+                            <button class="btn btn-danger" data-bs-dismiss="modal">
+                                <i class="fas fa-xmark fa-fw"></i>
+                                Cerrar ventana
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Reglamento -->
 <div class="portfolio-modal modal fade" id="reglamentoModal" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -644,7 +820,7 @@
                             <br>
                             <!-- Text -->
                             <p class="mb-4">
-                                Este juego consta de 5 programas (Hábitos Saludables, Medio Ambiente, Reciclaje, Botellitas de Amor, Coala y Tapitas Positivas), y cada programa tiene unas actividades que te pueden sumar puntos o restarlos.
+                                Este juego consta de 9 programas (Hábitos Saludables, Medio Ambiente, Reciclaje, Botellitas de Amor, Coala, Tapitas Positivas, Seguridad de la informacion, Ponte pilas con las pilas, Conociendo crezco), y cada programa tiene unas actividades que te pueden sumar puntos o restarlos.
                             </p>
                             <p class="mb-4">
                                 Cada trabajador inicia con 1.000 puntos. Si realizas actividades de Bienestar y Felicidad en el mes, podrás sumar puntos, pero si no las realizas o tienes malas acciones, los puntos se te restarán.

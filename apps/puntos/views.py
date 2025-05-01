@@ -91,14 +91,13 @@ def estadisticas_views(request):
 @login_required(login_url='/accounts/login')
 @user_passes_test(is_staff)
 def exportar_excel(request):
-    output = generar_excel_usuarios()
-
-    if not output:
-        return HttpResponse("No hay datos disponibles", status=400)
+    excel_file = generar_excel_usuarios()
+    if not excel_file:
+        return HttpResponse("No hay datos para exportar.", content_type="text/plain")
 
     response = HttpResponse(
-        output.getvalue(),
-        content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        excel_file,
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     )
-    response["Content-Disposition"] = 'attachment; filename="estadisticas_usuarios.xlsx"'
+    response['Content-Disposition'] = 'attachment; filename="estadisticas_usuarios.xlsx"'
     return response
