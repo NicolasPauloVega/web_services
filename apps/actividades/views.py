@@ -25,7 +25,7 @@ def actividades(request):
     paginator = Paginator(actividades, 10)
     page_number = request.GET.get('page')
     actividades_paginados = paginator.get_page(page_number)
-    return render(request, 'actividades.html', {'actividades': actividades, 'query': query})
+    return render(request, 'actividades.html', {'actividades': actividades_paginados, 'query': query})
 
 @login_required(login_url='/accounts/login/')
 @user_passes_test(is_staff, login_url='/')

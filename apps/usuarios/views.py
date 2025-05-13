@@ -113,7 +113,7 @@ def admin_dashboard(request):
 @login_required(login_url='/accounts/login/')
 @user_passes_test(is_staff, login_url='/')
 def usuarios(request):
-    usuarios = Usuarios.objects.all()
+    usuarios = Usuarios.objects.all().order_by('-puntos_totales')
     query = request.GET.get('q', '') # Consultar
     
     # Si la consulta es valida

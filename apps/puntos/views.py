@@ -4,6 +4,7 @@ from .models import Usuarios, Programa, Actividad, Puntos
 from .forms import PuntosForm
 from django.http import JsonResponse
 from django.contrib.auth.decorators import user_passes_test, login_required
+from django.core.paginator import Paginator
 
 # Configuraciones excel
 from django.http import HttpResponse
@@ -58,8 +59,13 @@ def puntos(request, id_usuario):
 @login_required(login_url='/accounts/login/')
 @user_passes_test(is_staff, login_url='/')
 def puntos_evidencia(request, id_usuario):
-    puntos = Puntos.objects.filter(usuario=id_usuario)
-    return render(request, 'evidencias.html', {'evidencias': puntos})
+    puntos = Puntos.objects.filter(usuario=id_usuario).order_by('-fecha')  # puedes ordenar si quieres
+    paginator = Paginator(puntos, 5)  # 5 evidencias por página
+
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'evidencias.html', {'evidencias': page_obj})
 
 @login_required(login_url='/accounts/login/')
 @user_passes_test(is_staff, login_url='/')

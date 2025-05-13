@@ -60,25 +60,25 @@
                         </table>
                         <nav>
                             <ul class="pagination justify-content-center">
-                                {% if usuarios.has_previous %}
+                                {% if puntos.has_previous %}
                                     <li class="page-item">
                                         <a class="page-link" href="?q={{ query }}&page=1">Primero</a>
                                     </li>
                                     <li class="page-item">
-                                        <a class="page-link" href="?q={{ query }}&page={{ usuarios.previous_page_number }}">Anterior</a>
+                                        <a class="page-link" href="?q={{ query }}&page={{ puntos.previous_page_number }}">Anterior</a>
                                     </li>   
                                 {% endif %}
                         
                                 <li class="page-item disabled">
-                                    <span class="page-link">Página {{ usuarios.number }} de {{ usuarios.paginator.num_pages }}</span>
+                                    <span class="page-link">Página {{ puntos.number }} de {{ puntos.paginator.num_pages }}</span>
                                 </li>
                         
-                                {% if usuarios.has_next %}
+                                {% if puntos.has_next %}
                                     <li class="page-item">
-                                        <a class="page-link" href="?q={{ query }}&page={{ usuarios.next_page_number }}">Siguiente</a>
+                                        <a class="page-link" href="?q={{ query }}&page={{ puntos.next_page_number }}">Siguiente</a>
                                     </li>
                                     <li class="page-item">
-                                        <a class="page-link" href="?q={{ query }}&page={{ usuarios.paginator.num_pages }}">Último</a>
+                                        <a class="page-link" href="?q={{ query }}&page={{ puntos.paginator.num_pages }}">Último</a>
                                     </li>
                                 {% endif %}
                             </ul>

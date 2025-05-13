@@ -24,7 +24,7 @@ def programs(request):
     paginator = Paginator(programas,10) # tomar 10 usuarios para paginar
     page_number = request.GET.get('page') # Paginar
     programas_paginados = paginator.get_page(page_number) # Mostrar los usuarios paginados
-    return render(request, 'programas.html', {'programas': programas, 'query': query})
+    return render(request, 'programas.html', {'programas': programas_paginados, 'query': query})
 
 @login_required(login_url='/accounts/login/')
 @user_passes_test(is_staff, login_url='/')
