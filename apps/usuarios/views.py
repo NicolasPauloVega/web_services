@@ -274,7 +274,8 @@ def solicitar_restauracion(request):
             usuario.save()
 
             # Crear enlace de restablecimiento
-            reset_link = f"http://127.0.0.1:8000/cambiar_contraseña_confirmar/{token}/"
+            reset_link = f"http://195.26.245.218//cambiar_contraseña_confirmar/{token}/"
+            # reset_link = f"http://195.26.245.218//cambiar_contraseña_confirmar/{token}/"
 
             # Renderizar la plantilla personalizada con los datos
             mensaje_html = render_to_string("emails/restablecer_contraseña.html", {
