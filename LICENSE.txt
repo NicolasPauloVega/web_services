@@ -1,0 +1,19 @@
+Copyright (c) 2025 Nicolás Paulo Vega y Maria Fernanda Molano
+
+Todos los derechos reservados.
+
+Este software fue desarrollado por Nicolás Paulo Vega y Maria Fernanda Molano para la empresa Positiva Compañía de Seguros, con fines de implementación interna. Sin embargo, el autor conserva todos los derechos de desarrollo y propiedad intelectual sobre el código fuente y la arquitectura del sistema.
+
+Está prohibida su reproducción, modificación, distribución o cualquier otro uso sin autorización expresa y por escrito del titular de los derechos.
+
+Este software solo puede ser utilizado por las organizaciones o personas que hayan adquirido una licencia comercial válida o hayan sido autorizadas explícitamente por el autor.
+
+El mensaje mostrado en el pie de página del sistema, que dice:
+
+    “Copyright © BIENESTAR Y FELICIDAD TOLIMA”
+
+es únicamente representativo del contenido visual del sistema, y no implica cesión de derechos ni transferencia de propiedad intelectual del software subyacente.
+
+Cualquier uso no autorizado constituirá una violación a los derechos de propiedad intelectual y podrá ser perseguido legalmente.
+
+Para obtener una licencia o más información, contactar a: nicolas.paulo.vega06@gmail.com
