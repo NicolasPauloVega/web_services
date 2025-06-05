@@ -1,19 +1,14 @@
-Copyright (c) 2025 Nicolás Paulo Vega y Maria Fernanda Molano
-
+Copyright © 2025 Positiva Compañía de Seguros - Sucursal Tolima
 Todos los derechos reservados.
 
-Este software fue desarrollado por Nicolás Paulo Vega y Maria Fernanda Molano para la empresa Positiva Compañía de Seguros, con fines de implementación interna. Sin embargo, el autor conserva todos los derechos de desarrollo y propiedad intelectual sobre el código fuente y la arquitectura del sistema.
+Este software ha sido desarrollado por Nicolás Paulo Vega y María Fernanda Molano para la empresa Positiva Compañía de Seguros, con fines de implementación interna.
 
-Está prohibida su reproducción, modificación, distribución o cualquier otro uso sin autorización expresa y por escrito del titular de los derechos.
+El autor conserva todos los derechos de desarrollo, propiedad intelectual y autoría sobre el código fuente, así como sobre la arquitectura del sistema.
 
-Este software solo puede ser utilizado por las organizaciones o personas que hayan adquirido una licencia comercial válida o hayan sido autorizadas explícitamente por el autor.
+Queda estrictamente prohibida la reproducción, modificación, distribución, comercialización, sublicencia, o cualquier otro uso total o parcial del software sin autorización previa, expresa y por escrito del titular de los derechos.
 
-El mensaje mostrado en el pie de página del sistema, que dice:
+Este software está destinado únicamente para uso por parte de organizaciones o individuos que hayan adquirido una licencia comercial válida o hayan sido expresamente autorizados por el autor.
 
-    “Copyright © BIENESTAR Y FELICIDAD TOLIMA”
+Cualquier uso no autorizado constituirá una infracción a los derechos de propiedad intelectual, y dará lugar a las acciones legales correspondientes, conforme a las leyes nacionales e internacionales vigentes en materia de derechos de autor y propiedad intelectual.
 
-es únicamente representativo del contenido visual del sistema, y no implica cesión de derechos ni transferencia de propiedad intelectual del software subyacente.
-
-Cualquier uso no autorizado constituirá una violación a los derechos de propiedad intelectual y podrá ser perseguido legalmente.
-
-Para obtener una licencia o más información, contactar a: nicolas.paulo.vega06@gmail.com
+Para consultas, licencias o más información, por favor contactarse con la sucursal.
